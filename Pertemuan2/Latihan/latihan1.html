@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Halaman Profil</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #f4f7fc;
+      color: #333;
+      display: grid;
+      grid-template-areas:
+        "header"
+        "nav"
+        "main"
+        "footer";
+      grid-template-rows: auto auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background: #0093ad;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      grid-area: nav;
+      background: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      justify-content: flex-end; 
+      align-items: center;        
+      gap: 25px;                  
+      padding: 12px 40px;         
+      border-bottom: 1px solid #e0e0e0; 
+    }
+
+    nav a {
+      color: #0099ad;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #a2caf8;
+    }
+
+    main {
+      grid-area: main;
+      display: grid;
+      grid-template-areas:
+        "populer konten iklan";
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    section, aside {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 20px;
+    }
+
+    section.populer { grid-area: populer; }
+    section.konten { grid-area: konten; }
+    aside { grid-area: iklan; }
+
+    h2 {
+      color: #0099ad;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      grid-area: footer;
+      background: #0093ad;
+      color: #fff;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>Website Profil</header>
+
+  <nav>
+    <a href="#">Beranda</a>
+    <a href="#">Produk</a>
+    <a href="#">Member</a>
+    <a href="#">Login</a>
+  </nav>
+
+  <main>
+    <section class="populer">
+      <h2>Populer</h2>
+      <p>Artikel dan produk populer akan ditampilkan di sini.</p>
+    </section>
+
+    <section class="konten">
+      <h2>Konten Dinamis</h2>
+      <p>Bagian utama berisi informasi dinamis seperti berita, promosi, atau pengumuman.</p>
+    </section>
+
+    <aside>
+      <h2>Iklan</h2>
+      <p>Ruang khusus untuk iklan atau promo.</p>
+    </aside>
+  </main>
+
+  <footer>© 2025 Website Profil | By Zaenarif Putra</footer>
+</body>
+</html>
