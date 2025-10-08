@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Halaman Profil</title>
+  <title>PT Biro Jodoh Sejati</title>
   <style>
+    /* === RESET & GLOBAL === */
     * {
       margin: 0;
       padding: 0;
@@ -12,115 +13,258 @@
     }
 
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #f4f7fc;
+      font-family: 'Poppins', sans-serif;
+      background-color: #fff5f8;
       color: #333;
-      display: grid;
-      grid-template-areas:
-        "header"
-        "nav"
-        "main"
-        "footer";
-      grid-template-rows: auto auto 1fr auto;
-      min-height: 100vh;
+      line-height: 1.7;
     }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* === HEADER === */
     header {
-      grid-area: header;
-      background: #0093ad;
+      background: linear-gradient(90deg, #d63384, #9b1b60);
       color: #fff;
       text-align: center;
-      padding: 20px;
-      font-size: 1.8rem;
+      padding: 40px 15px;
+      font-size: 2.2rem;
+      font-weight: 700;
       letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1.2s ease-in-out;
     }
 
+    /* === NAVBAR === */
     nav {
-      grid-area: nav;
-      background: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      background: #fff;
       display: flex;
-      justify-content: flex-end; 
-      align-items: center;        
-      gap: 25px;                  
-      padding: 12px 40px;         
-      border-bottom: 1px solid #e0e0e0; 
+      justify-content: center;
+      gap: 40px;
+      padding: 18px;
+      border-bottom: 1px solid #ffd6e0;
+      font-weight: 600;
     }
 
     nav a {
-      color: #0099ad;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
+      color: #9b1b60;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #ff5ba3;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     nav a:hover {
-      color: #a2caf8;
+      color: #ff5ba3;
     }
 
+    /* === LAYOUT === */
     main {
-      grid-area: main;
       display: grid;
-      grid-template-areas:
-        "populer konten iklan";
       grid-template-columns: 1fr 2fr 1fr;
-      gap: 20px;
-      padding: 20px;
+      gap: 30px;
+      padding: 50px 70px;
     }
 
     section, aside {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      padding: 20px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 25px;
+      transition: 0.3s;
     }
 
-    section.populer { grid-area: populer; }
-    section.konten { grid-area: konten; }
-    aside { grid-area: iklan; }
+    section:hover, aside:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+    }
 
-    h2 {
-      color: #0099ad;
+    /* === BAGIAN KIRI === */
+    .populer h2 {
+      color: #9b1b60;
+      border-left: 5px solid #ff5ba3;
+      padding-left: 10px;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .populer ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .populer li {
       margin-bottom: 10px;
+      color: #444;
     }
 
-    footer {
-      grid-area: footer;
-      background: #0093ad;
+    /* === BAGIAN TENGAH === */
+    .konten {
+      background: linear-gradient(135deg, #d63384, #f06595);
       color: #fff;
       text-align: center;
+      padding: 45px 35px;
+      border-radius: 20px;
+    }
+
+    .konten h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ffe8f1;
+    }
+
+    .konten p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      opacity: 0.95;
+    }
+
+    .konten h3 {
+      font-size: 1.3rem;
+      color: #ffe8f1;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ffe8f1;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+
+    /* === BAGIAN KANAN === */
+    aside {
+      background: linear-gradient(135deg, #9b1b60, #d63384);
+      color: #fff;
+    }
+
+    .promo-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 15px;
       padding: 15px;
-      font-size: 0.9rem;
+      margin-bottom: 20px;
+      transition: 0.3s;
+      text-align: center;
+    }
+
+    .promo-box:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.05);
+    }
+
+    .promo-box h3 {
+      color: #ffb6d0;
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .promo-box p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: #9b1b60;
+      color: #fff;
+      text-align: center;
+      padding: 22px;
+      font-size: 0.95rem;
+      margin-top: 50px;
+      border-top: 3px solid #ff5ba3;
+    }
+
+    /* === ANIMASI === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 1000px) {
+      main {
+        grid-template-columns: 1fr;
+        padding: 30px 25px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>Website Profil</header>
+
+  <header>PT BIRO JODOH SEJATI</header>
 
   <nav>
     <a href="#">Beranda</a>
-    <a href="#">Produk</a>
-    <a href="#">Member</a>
-    <a href="#">Login</a>
+    <a href="#">Layanan</a>
+    <a href="#">Kisah Sukses</a>
+    <a href="#">Hubungi Kami</a>
   </nav>
 
   <main>
+    <!-- Bagian kiri -->
     <section class="populer">
-      <h2>Populer</h2>
-      <p>Artikel dan produk populer akan ditampilkan di sini.</p>
+      <h2>Artikel Populer</h2>
+      <ul>
+        <li>💞 Tips Membangun Hubungan Sehat</li>
+        <li>🌹 Cinta Sejati di Era Digital</li>
+        <li>💍 Cerita Bahagia dari Klien Kami</li>
+      </ul>
     </section>
 
+    <!-- Bagian tengah -->
     <section class="konten">
-      <h2>Konten Dinamis</h2>
-      <p>Bagian utama berisi informasi dinamis seperti berita, promosi, atau pengumuman.</p>
+      <h2>Selamat Datang di PT Biro Jodoh Sejati</h2>
+      <p>Kami membantu Anda menemukan pasangan hidup yang sesuai dengan nilai, kepribadian, dan impian Anda. Dengan pendekatan modern dan aman, cinta sejati kini hanya selangkah lebih dekat.</p>
+
+      <h3>Visi Kami</h3>
+      <p>Menjadi biro jodoh terpercaya yang menghubungkan hati dengan keseriusan dan kejujuran.</p>
+
+      <h3>Misi Kami</h3>
+      <p>1. Menyediakan platform perjodohan aman dan profesional.<br>
+         2. Membantu individu menemukan cinta sejati berdasarkan kecocokan nilai hidup.<br>
+         3. Menjadi jembatan menuju hubungan yang langgeng dan bermakna.</p>
+
+      <h3>Layanan Kami</h3>
+      <p>💌 Pencocokan Pasangan Profesional<br>
+         🫶 Konsultasi Cinta & Hubungan<br>
+         🌸 Event “Meet Your Match” Offline & Online</p>
     </section>
 
+    <!-- Bagian kanan -->
     <aside>
-      <h2>Iklan</h2>
-      <p>Ruang khusus untuk iklan atau promo.</p>
+      <div class="promo-box">
+        <h3>💖 Promo Oktober</h3>
+        <p>Daftar sekarang & dapatkan sesi konsultasi cinta gratis!</p>
+      </div>
+
+      <div class="promo-box">
+        <h3>🌷 Paket Premium</h3>
+        <p>Akses eksklusif ke database pasangan serius & pendamping pribadi.</p>
+      </div>
+
+      <div class="promo-box">
+        <h3>💞 Cerita Sukses</h3>
+        <p>Lebih dari 500 pasangan telah menemukan cinta sejati bersama kami!</p>
+      </div>
     </aside>
   </main>
 
-  <footer>© 2025 Website Profil | By Zaenarif Putra</footer>
+  <footer>
+    © 2025 PT Biro Jodoh Sejati | Dikelola oleh Zaenarif Putra
+  </footer>
+
 </body>
 </html>
