@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batik Nusantara | Toko Online</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">🪡 Batik Nusantara</div>
+    <nav class="navbar" id="navbar">
+      <ul>
+        <li><a href="#" class="active">Beranda</a></li>
+        <li><a href="#">Koleksi</a></li>
+        <li><a href="#">Tentang</a></li>
+        <li><a href="#">Kontak</a></li>
+      </ul>
+    </nav>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+  </header>
+
+  <!-- SLIDER -->
+  <section class="banner">
+    <div class="banner-slides">
+      <div class="slide s1"></div>
+      <div class="slide s2"></div>
+      <div class="slide s3"></div>
+    </div>
+    <div class="banner-text">
+      <h2>Batik Nusantara</h2>
+      <p>Memadukan Warisan Budaya dengan Gaya Modern</p>
+      <a href="#" class="btn-banner">Jelajahi Koleksi</a>
+    </div>
+  </section>
+
+  <!-- KOLEKSI PRODUK -->
+  <main class="content">
+    <section class="product-list">
+      <h3>🧵 Koleksi Pilihan Kami</h3>
+      <p class="subtitle">Kain batik terbaik dari berbagai daerah Indonesia, dibuat dengan cinta dan tradisi.</p>
+
+      <div class="grid">
+        <!-- Kartu Produk -->
+        <div class="product-card">
+          <img src="https://i.pinimg.com/1200x/6a/7c/35/6a7c35f521eebd88d02e034c3d387a3d.jpg" alt="Batik Tulis Eksklusif">
+          <div class="info">
+            <h4>Batik Tulis Eksklusif</h4>
+            <p>Motif parang klasik, sentuhan emas di setiap helai.</p>
+            <span class="price">Rp 450.000</span>
+            <button class="btn-detail" onclick="openDetail('Batik Tulis Eksklusif', 'Motif parang klasik dengan warna lembut. Dibuat manual oleh pengrajin batik Yogyakarta.', 'Rp 450.000')">Lihat Detail</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://i.pinimg.com/736x/17/b2/c4/17b2c4f291eabeadec6fbb15a24f3e6f.jpg" alt="Batik Cap Parang">
+          <div class="info">
+            <h4>Batik Cap Parang</h4>
+            <p>Cocok untuk acara semi-formal dan kasual.</p>
+            <span class="price">Rp 220.000</span>
+            <button class="btn-detail" onclick="openDetail('Batik Cap Parang', 'Batik cap dengan desain kontemporer yang tetap mempertahankan pola klasik parang.', 'Rp 220.000')">Lihat Detail</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://i.pinimg.com/1200x/a2/6a/03/a26a03b2531c20f0db8d010927f68b41.jpg" alt="Batik Couple Premium">
+          <div class="info">
+            <h4>Batik Couple Premium</h4>
+            <p>Kemewahan untuk pasangan modern.</p>
+            <span class="price">Rp 550.000</span>
+            <button class="btn-detail" onclick="openDetail('Batik Couple Premium', 'Set couple batik eksklusif dengan warna senada. Cocok untuk acara istimewa.', 'Rp 550.000')">Lihat Detail</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://i.pinimg.com/736x/02/bf/00/02bf008b09d1d8a125f3e193fb06efc4.jpg" alt="Batik Gamis Elegan">
+          <div class="info">
+            <h4>Batik Gamis Elegan</h4>
+            <p>Anggun dengan nuansa pastel lembut.</p>
+            <span class="price">Rp 320.000</span>
+            <button class="btn-detail" onclick="openDetail('Batik Gamis Elegan', 'Gamis batik modern yang ringan dan nyaman, cocok untuk acara keluarga.', 'Rp 320.000')">Lihat Detail</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img src="https://i.pinimg.com/1200x/e8/bc/c3/e8bcc32cc115f5c6d45f5f766a8c7503.jpg" alt="Batik Modern Kasual">
+          <div class="info">
+            <h4>Batik Modern Kasual</h4>
+            <p>Desain ringan untuk gaya sehari-hari.</p>
+            <span class="price">Rp 250.000</span>
+            <button class="btn-detail" onclick="openDetail('Batik Modern Kasual', 'Desain modern untuk tampilan santai namun tetap berbudaya.', 'Rp 250.000')">Lihat Detail</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REKOMENDASI -->
+    <aside class="recommend">
+      <h3>🌸 Rekomendasi Minggu Ini</h3>
+      <div class="recommend-card">
+        <img src="https://i.pinimg.com/1200x/5f/20/d7/5f20d706c762cfaae2f4a0ae6cdef4e9.jpg" alt="Batik Coklat Klasik">
+        <h4>Batik Coklat Klasik</h4>
+        <p>Motif tradisional, sentuhan elegan.</p>
+        <span>Rp 180.000</span>
+      </div>
+    </aside>
+  </main>
+
+  <!-- BAGIAN TENTANG -->
+  <section class="about">
+    <div class="about-container">
+      <img src="https://i.pinimg.com/1200x/d4/cc/67/d4cc67cf796c0b79bb29d0e62c5fea4e.jpg" alt="Pengrajin Batik">
+      <div class="about-text">
+        <h3>Tentang Batik Nusantara</h3>
+        <p>Kami hadir untuk melestarikan warisan batik Indonesia dengan gaya modern dan kualitas terbaik. Setiap helai kain adalah karya seni yang dibuat dengan hati, menghadirkan keindahan dalam setiap kesempatan.</p>
+        <a href="#" class="btn-banner">Pelajari Lebih Lanjut</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONI -->
+  <section class="testimoni">
+    <h3>💬 Apa Kata Pelanggan Kami</h3>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p>"Batiknya halus banget, warnanya mewah. Sangat puas!"</p>
+        <h4>- Rina, Surabaya</h4>
+      </div>
+      <div class="testi-card">
+        <p>"Kualitas premium, pengiriman cepat, dan packaging rapi."</p>
+        <h4>- Dimas, Bandung</h4>
+      </div>
+      <div class="testi-card">
+        <p>"Batik Nusantara bikin tampil elegan tanpa kehilangan nilai budaya."</p>
+        <h4>- Sari, Jakarta</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DETAIL PRODUK -->
+  <div class="modal" id="productModal">
+    <div class="modal-content">
+      <span class="close" onclick="closeDetail()">&times;</span>
+      <h3 id="modalTitle"></h3>
+      <p id="modalDesc"></p>
+      <p id="modalPrice" class="price"></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-columns">
+      <div>
+        <h4>Tentang Kami</h4>
+        <p>Batik Nusantara mengangkat keindahan kain tradisional dengan inovasi modern. Setiap produk dibuat dengan keahlian tangan terbaik dari pengrajin lokal.</p>
+      </div>
+      <div>
+        <h4>Bantuan</h4>
+        <p>Cara Pemesanan</p>
+        <p>Pengiriman</p>
+        <p>Retur Barang</p>
+      </div>
+      <div>
+        <h4>Ikuti Kami</h4>
+        <p>Instagram</p>
+        <p>Facebook</p>
+      </div>
+    </div>
+    <p class="copyright">© 2025 Batik Nusantara — by Zaenarif Putra</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const nav = document.getElementById('navbar');
+    toggle.addEventListener('click', () => nav.classList.toggle('show'));
+
+    function openDetail(title, desc, price) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('productModal').style.display = 'flex';
+    }
+
+    function closeDetail() {
+      document.getElementById('productModal').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
