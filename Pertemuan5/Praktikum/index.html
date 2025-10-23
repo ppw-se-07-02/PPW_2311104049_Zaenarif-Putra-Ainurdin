@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praktikum JS & Jquery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Praktikum JavaScript & jQuery</h1>
+
+    <!-- Menampilkan berbagai tipe data dasar di JavaScript -->
+    <h3>Variabel dan Tipe Data Dasar di JavaScript</h3>
+    <p id="outputTipeData"></p>
+    <br>
+    <h3>Contoh ke-2 Penggunaan Variabel</h3>
+    <p id="test"></p>
+    <br>
+    <h3>Contoh Penggunaan Array</h3>
+    <p id="array"></p>
+    <br>
+    <h3>Contoh ke-2 Penggunaan Array</h3>
+    <p id="array2"></p>
+    <br>
+    <h3>Contoh Pengendalian Stuktur dengan (if-else, for, while, for-in, dan do-while)</h3>
+    <p id="outputPercabangan"></p>
+    <br>
+    <p id="outputPercabanganGrade"></p>
+    <br>
+    <h3>Contoh ke-2 Perulangan dengan (do, do-while, dan for)</h3>
+    <p id="whileLoop"></p>
+    <p id="doLoop"></p>
+    <p id="doWhileLoop"></p>
+    <p id="forLoop"></p>
+    <br>
+    <h3>Pembuatan Object pada Javascript</h3>
+    <p id="outputObjectNilaiProperty"></p>
+    <br>
+    <h3>Penggunaan Object pada Javascript ke-2</h3>
+    <p id="outputObjectNilaiProperty2"></p>
+    <br>
+    <h3>Pemanggilan Fungsi pada Javascript</h3>
+    <p id="hasil"></p>
+    <br>
+    <h3>Pengembalian Nilai dari Fungsi</h3>
+    <p id="hasilKaliPengembalianFungsi"></p>
+    <p id="hasilTambahPengembalianFungsi"></p>
+
+    <script>
+        // 1. Variabel dan Tipe Data Dasar di JavaScript
+        // Deklarasi berbagai tipe data dasar
+        var angka = 42; // Number
+        var teks = "Ahmad Ruslan"; // String
+        var benar = true; // Boolean
+        var salah = false; // Boolean
+        var kosong = null; // Null
+        var tidakDidefinisikan; // Undefined
+        var daftar = ["apel", "pisang", "mangga"]; // Array
+        var tanggal = new Date(); // Date (objek tanggal)
+        var pola = /[A-Z]/; // RegExp (regular expression)
+        var orang = { nama: "Ruslan", umur: 21 }; // Object
+        // Gabungkan hasil ke satu variabel string
+        var hasil = "";
+        hasil += "<b>Number:</b> " + angka + "<br>";
+        hasil += "<b>String:</b> " + teks + "<br>";
+        hasil += "<b>Boolean 1:</b> " + benar + "<br>";
+        hasil += "<b>Boolean 0:</b> " + salah + "<br>";
+        hasil += "<b>Null:</b> " + kosong + "<br>";
+        hasil += "<b>Undefined:</b> " + tidakDidefinisikan + "<br>";
+        hasil += "<b>Array:</b> " + daftar.join(", ") + "<br>";
+        hasil += "<b>Date:</b> " + tanggal + "<br>";
+        hasil += "<b>RegExp:</b> " + pola + ", Ini Sirsak = " + pola.test("Sirsak") +
+        "<br>";
+        hasil += "<b>Object:</b> nama = " + orang.nama + ", umur = " + orang.umur +
+        "<br>";
+        // Tampilkan hasil di halaman
+        document.getElementById("outputTipeData").innerHTML = hasil;
+
+        // 2. Contoh ke-2 Penggunaan Variabel
+        var nama = "Dewi";
+        var umur = 21;
+        var isMahasiswa = true;
+        document.getElementById("test").innerHTML =
+        "Nama: " + nama + "<br>" +
+        "Umur: " + umur + "<br>" +
+        "Mahasiswa: " + isMahasiswa;
+
+        // 3. Contoh Penggunaan Array
+        var data = ["Satu", 2, true, "Tiga", 4]; // Array dengan tipe data campuran
+        var arr2 = [["satu", "dua"], ["tiga", "empat"]]; // Array 2D
+        document.getElementById("array").innerHTML =
+            "Elemen pertama: " + data[0] + "<br>" +
+            "Elemen ketiga: " + data[2] + "<br>" +
+            "Isi arr2: " + arr2 + "<br>" +
+            "Elemen arr2[0][1]: " + arr2[0][1] + "<br>" + //elemen pada baris 0, kolom 1
+        data[10]; // mengembalikan undefined
+        
+        // 4. Contoh ke-2 Penggunaan Array
+        var data2 = ["pisang", "apel", "mangga"];
+        // Menampilkan hasil ke HTML
+        document.getElementById("array2").innerHTML =
+            "Isi awal array: " + data2 + "<br>" +
+            "Panjang awal array: " + data2.length + "<br><br>" +
+             // Menambahkan elemen baru
+            "Menambahkan durian (push): " + data2.push("durian") + "<br>" +
+            //mengembalikan panjang baru array
+            "Isi array setelah push: " + data2 + "<br>" +
+            // Menghapus elemen terakhir
+            "Menghapus elemen terakhir (pop): " + data2.pop() + "<br>" + // mengembalikan elemen yang dihapus
+            "Isi array setelah pop: " + data2 + "<br>";
+        
+        // 5. Contoh Pengendalian Stuktur dengan (if-else, for, while, for-in, dan do-while)
+        var pendidikan = "S2";
+            var gelar;
+                if (pendidikan === "S1") {
+                gelar = "Sarjana";
+                } else if (pendidikan === "S2") {
+                gelar = "Master";
+                } else if (pendidikan === "S3") {
+                gelar = "Doktor";
+                } else {
+                gelar = "Tidak diketahui";
+                }
+            document.getElementById("outputPercabangan").innerHTML =
+            "Sekarang kamu: " + pendidikan + ", gelar kamu: " + gelar;
+        
+        var gradenilai = 84.5;
+        var predikat;
+            if (gradenilai >= 85 && gradenilai <= 100) {
+                predikat = "A";
+            } else if (gradenilai >= 70 && gradenilai < 85) {
+                predikat = "B";
+            } else if (gradenilai >= 55 && gradenilai < 70) {
+                predikat = "C";
+            } else if (gradenilai >= 40 && gradenilai < 55) {
+                predikat = "D";
+            } else if (gradenilai >= 0 && gradenilai < 40) {
+                predikat = "E";
+            } else {
+                predikat = "Nilai tidak valid";
+            }
+        document.getElementById("outputPercabanganGrade").innerHTML +=
+        "<br>Grade nilai: " + gradenilai + ", Predikat: " + predikat;
+
+        // 6. Contoh ke-2 Perulangan dengan (do, do-while, dan for)
+        // Perulangan while
+        document.addEventListener("DOMContentLoaded", function() {
+        var text1 = "<strong>While Loop:</strong><br>";
+        var i = 0;
+            while (i < 3) {
+                text1 += "Perulangan while ke-" + i + "<br>";
+                i++;
+            }
+        document.getElementById("whileLoop").innerHTML = text1;
+        });
+
+        // Perulangan do
+        var text1 = "<strong>Do Loop:</strong><br>";
+        var i = 0;
+            do {
+                text1 += "Perulangan do ke-" + i + "<br>";
+                i++; // Increment i by 1
+                if (i >= 3) break; // Menghentikan perulangan
+            } while (true);
+        document.getElementById("doLoop").innerHTML = text1;
+
+        // Perulangan do-while
+        var text1 = "<strong>Do-While Loop:</strong><br>";
+        var i = 0;
+            do {
+                text1 += "Perulangan do-while ke-" + i + "<br>";
+                i++;
+            } while (i < 3);
+        document.getElementById("doWhileLoop").innerHTML = text1;
+        
+        // Perulangan for
+        var text2 = "<strong>For Loop:</strong><br>";
+            for (var j = 0; j < 3; j++) {
+                text2 += "Perulangan for ke-" + j + "<br>";
+            }
+        document.getElementById("forLoop").innerHTML = text2;
+
+        // 7. Pembuatan Object pada Javascript
+        var objek_kosong = {};
+        var mobil = {
+        "warna-badan": "merah",
+        "warna-badan2": "biru", // properti dengan nama mengandung tanda hubung
+        "nomor-polisi": "BK1234AB",
+        merk: "Toyota", // properti dengan nama biasa
+        tahun: 2020
+        };
+        // Nested Object
+        var jadwal = {
+            platform: 34,
+            telah_berangkat: false,
+            asal: {
+                kode_kota: "MDN",
+                nama_kota: "Medan",
+                waktu: "2023-12-29 14:00"
+            },
+            tujuan: {
+                kode_kota: "JKT",
+                nama_kota: "Jakarta",
+                waktu: "2023-12-29 17:30"
+            },
+            // Jika Mengubah di Var
+            // spesifikasi_mobil: {
+            //     jumlah_ban: 4,
+            //     tipe_transmisi: "otomatis",
+            //     bahan_bakar: "bensin"
+            // }
+            
+        };
+        // Menambahkan properti baru ke objek mobil dan jadwal
+        mobil.jumlahBan = 4;
+        mobil.bahanBakar = "Bensin";
+        mobil["warna-badan"] = "biru";
+        mobil.tipe_transmisi = "Otomatis";
+        document.getElementById("outputObjectNilaiProperty").innerHTML =
+        "Warna Mobil: " + mobil["warna-badan"] + "<br>" +
+        "Nomor Polisi: " + mobil["nomor-polisi"] + "<br>" +
+        "Merk: " + mobil.merk + "<br>" +
+        "Tahun: " + mobil.tahun + "<br>" +
+        "Asal: " + jadwal.asal.nama_kota + "<br>" +
+        "Tujuan: " + jadwal.tujuan.nama_kota + "<br>" +
+        "Jumlah Ban: " + mobil.jumlahBan + "<br>" + 
+        "Tipe Transmisi: " + mobil.tipe_transmisi + "<br>" + 
+        "Bahan Bakar: " + mobil.bahanBakar;
+
+        // 8. Penggunaan Object pada Javascript ke-2
+        var truk = Object(mobil);
+        truk.merk = "Hino";
+        truk.jumlahBan = 6;
+        truk["Ukuran Truk"] = "Besar";
+        document.getElementById("outputObjectNilaiProperty2").innerHTML +=
+        "Truk Merk: " + truk.merk + "<br>" +
+        "Jumlah Ban: " + truk.jumlahBan +  "<br>" +
+        "Ukuran Truk: " + truk["Ukuran Truk"];
+
+        // 9. Pemanggilan Fungsi pada Javascript
+        function tambah(a, b) {
+            return a + b;
+        }
+        function kali(x, y) {
+            return x * y;
+        }
+        document.getElementById("hasil").innerHTML =
+        "Hasil dari tambah (3 dan 5) adalah: " + tambah(3, 5) + "<br>" +
+        "Hasil dari kali (4 dan 5) adalah: " + kali(4, 5);
+
+        // 10. Pengembalian Nilai dari Fungsi
+        // Pemanggilan fungsi dan penyimpanan hasilnya
+        var simpan = tambah(3, 5); // simpan = 8
+        var hasil1 = tambah(simpan, 2); // 8 + 2 = 10
+        var hasil2 = tambah(tambah(3, 5), 2); // (8) + 2 = 10
+        var hasil3 = tambah(tambah(2, 3), 4); // (5) + 4 = 9
+        // Tampilkan hasil ke HTML
+        document.getElementById("hasilTambahPengembalianFungsi").innerHTML =
+            "tambah(3,5) = " + simpan + "<br>" +
+            "tambah(simpan,2) = " + hasil1 + "<br>" +
+            "tambah(tambah(3,5),2) = " + hasil2 + "<br>" +
+            "tambah(tambah(2,3),4) = " + hasil3;
+        document.getElementById("hasilKaliPengembalianFungsi").innerHTML =
+        "kali(4,5) = " + kali(4,5) ; // contoh fungsi ekspresi
+    </script>
+</body>
+</html>

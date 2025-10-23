@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        // 1. Text
+        // $(document).ready(function () {
+        //     $("body").append("<p>Halo, Andi !</p>");
+        // });  
+
+        // 2. Array
+        // $(document).ready(function() {
+        //     var hobi = ["Membaca", "Bersepeda", "Bermain Musik"];
+        //     $("#hasil").text("Hobi Favorit : " + hobi[1]);
+        // });
+
+        // 3. Operasi Bilangan
+        // $(document).ready(function() {
+        //     var a = 10;
+        //     var b = 5;
+        //     var hasil = a + b;
+        //     $("#output").html("Hasil Penjumlahan : " + hasil)
+            
+        // });
+
+        // 4. If-Else
+        // $(document).ready(function() {
+        //     var nilai = 75;
+
+        //     if (nilai >= 75) {
+        //         $("#hasil").text("Selamat, anda lulus!");
+        //         $("#hasil").css("color", "green");
+        //     }
+        //     else {
+        //         $("#hasil").text("Maaf, anda tidak lulus.");
+        //         $("#hasil").css("color", "red");
+        //     }
+        // });
+
+        // 5. Efek hide/show
+        // $(document).ready(function() {
+        //         $("#hide").click(function() {
+        //         $("p").hide();
+        //     });
+        //         $("#show").click(function() {
+        //         $("p").show();
+        //     });
+        // });
+
+        // 6. Animasi
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("div").animate({
+                    height: 'toggle'
+                });
+            });
+        });
+
+    </script>
+</head>
+<body>
+    <!-- Array
+    <p id="hasil"></p> -->
+
+    <!-- Operasi Bilangan
+    <p id="output"></p> -->
+
+    <!-- if-else
+    <p id="hasil"></p> -->
+
+    <!-- Efek hide/show -->
+    <!-- <p>If you click on the "Hide" button, I will disappear.</p>
+    <button id="hide">Hide</button>
+    <button id="show">Show</button> -->
+
+    <!-- Animasi -->
+    <!-- <p>Click the button multiple times to toggle the animation.</p>
+    <button>Toggle Animation</button>
+    <div style="width:100px;height:100px;background-color:red;margin-top:10px;"></div> -->
+</body>
+</html>
