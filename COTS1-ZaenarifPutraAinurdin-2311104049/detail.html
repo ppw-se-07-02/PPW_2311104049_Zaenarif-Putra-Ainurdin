@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - ComputerArea GamingLap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-gamepad me-2"></i>
+                    <span class="brand-text">COMPUTER <span class="text-danger">AREA</span></span>
+                </a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Beranda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#produk">Produk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Button Back -->
+    <section class="back-section py-3 bg-dark">
+        <div class="container">
+            <a href="index.html" class="btn btn-outline-light btn-sm back-btn">
+                <i class="fas fa-arrow-left me-2"></i>Kembali ke Beranda
+            </a>
+        </div>
+    </section>
+
+    <!-- Product Detail -->
+    <section class="product-detail py-5">
+        <div class="container">
+            <div class="row" id="productDetail">
+                <!-- Content will be loaded by JavaScript -->
+                <div class="col-12 text-center">
+                    <div class="loading-spinner">
+                        <i class="fas fa-spinner fa-spin fa-3x text-primary mb-3"></i>
+                        <p>Memuat detail produk...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-light py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand mb-3">
+                        <i class="fas fa-gamepad me-2"></i>
+                        <span class="brand-text">COMPUTER <span class="text-danger">AREA</span></span>
+                    </div>
+                    <p class="footer-desc">Toko laptop gaming terpercaya dengan koleksi lengkap dan harga terbaik. Memberikan pengalaman gaming terbaik untuk kemenangan Anda.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="index.html#produk">Produk</a></li>
+                        <li><a href="index.html#rekomendasi">Rekomendasi</a></li>
+                        <li><a href="login.html">Login</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <h5>Kategori</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Laptop Gaming</a></li>
+                        <li><a href="#">Laptop Content Creator</a></li>
+                        <li><a href="#">Laptop Bisnis</a></li>
+                        <li><a href="#">Aksesoris Gaming</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 mb-4">
+                    <h5>Kontak Kami</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt me-2"></i>Jl. Teknologi No. 123, Jakarta</p>
+                        <p><i class="fas fa-phone me-2"></i>(021) 1234-5678</p>
+                        <p><i class="fas fa-envelope me-2"></i>info@computerarea.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom pt-4 mt-4 border-top border-secondary">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="mb-0">&copy; 2025 ComputerArea. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p class="mb-0">by Zaenarif Putra - 2311104049</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/detail.js"></script>
+</body>
+</html>
