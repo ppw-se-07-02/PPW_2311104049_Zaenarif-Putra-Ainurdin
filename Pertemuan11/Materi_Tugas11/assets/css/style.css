@@ -1,0 +1,271 @@
+/* === RESET & GLOBAL === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  background: #fdfaf5;
+  color: #3a2e25;
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* === HEADER === */
+.header {
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  color: #8b4513;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.navbar-nav .nav-link {
+  color: #8b4513;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #a46b1b;
+}
+
+.navbar-toggler {
+  border: none;
+  font-size: 1.5em;
+  color: #8b4513;
+}
+
+/* === BANNER / SLIDER === */
+.banner {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 40vw, 400px);
+  overflow: hidden;
+  border-bottom: 5px solid #d4a373;
+  margin-top: 56px; /* Untuk offset navbar fixed */
+}
+
+.banner-slides {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: slideShow 15s infinite;
+}
+
+.slide {
+  flex: 1 0 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(70%);
+}
+
+/* === Gambar slider === */
+.s1 {
+  background-image: url('https://i.pinimg.com/736x/97/b3/85/97b38595f5f31380bcf5b75f8594b5fd.jpg');
+}
+.s2 {
+  background-image: url('https://i.pinimg.com/1200x/be/69/c7/be69c79c0a3d688e6581941c038719eb.jpg');
+}
+.s3 {
+  background-image: url('https://i.pinimg.com/1200x/71/64/62/716462ae4b4f20fccf0a1f6ff618219b.jpg');
+}
+
+@keyframes slideShow {
+  0%, 100% { transform: translateX(0); }
+  33% { transform: translateX(-100%); }
+  66% { transform: translateX(-200%); }
+}
+
+/* === TEKS DI SLIDER === */
+.banner-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 0 5%;
+}
+
+.banner-text h2 {
+  font-size: clamp(1.2em, 4vw, 2.4em);
+  font-family: 'Playfair Display', serif;
+}
+
+.banner-text p {
+  font-size: clamp(0.8em, 2vw, 1.1em);
+  margin: 10px 0 20px;
+}
+
+.btn-banner {
+  background: linear-gradient(90deg, #c29b6c, #8b4513);
+  color: white;
+  padding: 10px 22px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.3s ease;
+  border: none;
+}
+
+.btn-banner:hover {
+  background: linear-gradient(90deg, #8b4513, #c29b6c);
+  color: white;
+}
+
+/* === PRODUK === */
+.product-list h3 {
+  color: #8b4513;
+  font-size: 1.8em;
+}
+
+.subtitle {
+  color: #7a6a56;
+}
+
+.product-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: 0.3s ease;
+  border: none;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.product-card .card-body {
+  padding: 15px;
+}
+
+.product-card h4 {
+  color: #4b2e05;
+  font-size: 1.1em;
+  margin-bottom: 4px;
+}
+
+.product-card p {
+  color: #7a6a56;
+  font-size: 0.9em;
+  margin-bottom: 8px;
+}
+
+.price {
+  color: #a46b1b;
+  font-weight: 700;
+}
+
+.btn-detail {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: #d4a373;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: 0.3s ease;
+}
+
+.btn-detail:hover {
+  background: #b88652;
+  color: white;
+}
+
+/* === REKOMENDASI === */
+.recommend .card {
+  background: #fff7ef;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(139,69,19,0.15);
+  border: none;
+}
+
+.recommend h3 {
+  color: #8b4513;
+}
+
+/* === ABOUT === */
+.about {
+  background: #fffaf0;
+}
+
+.about-container img {
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* === TESTIMONI === */
+.testimoni {
+  background: linear-gradient(180deg, #fffaf0, #f4ede4);
+}
+
+.testi-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border: none;
+  transition: 0.3s ease;
+}
+
+.testi-card:hover {
+  transform: translateY(-4px);
+}
+
+/* === MODAL === */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e9ecef;
+  background: #f8f9fa;
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-footer {
+  border-top: 1px solid #e9ecef;
+  border-radius: 0 0 15px 15px;
+}
+
+/* === FOOTER === */
+footer {
+  background: #8b4513;
+  color: #fff;
+}
+
+footer h4 {
+  margin-bottom: 15px;
+}
+
+footer .copyright {
+  font-size: 0.9em;
+  opacity: 0.8;
+}
