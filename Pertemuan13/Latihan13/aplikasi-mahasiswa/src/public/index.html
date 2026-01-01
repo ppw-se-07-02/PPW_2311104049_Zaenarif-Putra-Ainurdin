@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Data Mahasiswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { padding: 20px; background-color: #f8f9fa; }
+        .container { max-width: 1200px; }
+        .card { margin-bottom: 20px; }
+        .status-circle {
+            width: 10px; height: 10px; border-radius: 50%;
+            display: inline-block; margin-right: 5px;
+        }
+        .status-active { background-color: #28a745; }
+        .endpoint-card { cursor: pointer; transition: transform 0.2s; }
+        .endpoint-card:hover { transform: translateY(-2px); }
+        .response-box {
+            background-color: #f8f9fa; 
+            border: 1px solid #dee2e6; 
+            border-radius: 5px; 
+            padding: 15px;
+            max-height: 300px; 
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center mb-4">
+            <h1 class="text-primary">📚 Aplikasi Data Mahasiswa</h1>
+            <p class="lead">Node.js + Express.js + MySQL + REST API</p>
+            <div class="d-flex justify-content-center align-items-center mb-3">
+                <span class="status-circle status-active"></span>
+                <small class="text-muted" id="apiStatus">API Connected</small>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Info Panel -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">📊 Informasi Sistem</h5>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Status Server:</strong> <span class="text-success">● Berjalan</span></p>
+                        <p><strong>Database:</strong> <span id="dbName">db_mahasiswa</span></p>
+                        <p><strong>Total Data:</strong> <span id="totalData">-</span> mahasiswa</p>
+                        <p><strong>Port:</strong> <span id="serverPort">3000</span></p>
+                        <hr>
+                        <h6>📋 Instruksi:</h6>
+                        <ol class="small">
+                            <li>Test API di Postman/Insomnia</li>
+                            <li>Gunakan endpoint di samping</li>
+                            <li>Data akan tampil di bawah</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">⚡ Quick Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-success btn-sm w-100 mb-2" onclick="getAllStudents()">
+                            🔄 Refresh Data
+                        </button>
+                        <button class="btn btn-primary btn-sm w-100 mb-2" onclick="testAPI()">
+                            🧪 Test API Connection
+                        </button>
+                        <button class="btn btn-warning btn-sm w-100" onclick="addSampleData()">
+                            ➕ Tambah Data Contoh
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Endpoints -->
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">🔗 REST API Endpoints</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- GET All -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card endpoint-card border-success" onclick="getAllStudents()">
+                                    <div class="card-body">
+                                        <span class="badge bg-success">GET</span>
+                                        <h6>/api/mahasiswa</h6>
+                                        <p class="small text-muted">Ambil semua data mahasiswa</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- POST -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card endpoint-card border-primary" onclick="showAddForm()">
+                                    <div class="card-body">
+                                        <span class="badge bg-primary">POST</span>
+                                        <h6>/api/mahasiswa</h6>
+                                        <p class="small text-muted">Tambah data mahasiswa baru</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- GET by ID -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card endpoint-card border-info">
+                                    <div class="card-body">
+                                        <span class="badge bg-info">GET</span>
+                                        <h6>/api/mahasiswa/:id</h6>
+                                        <p class="small text-muted">Ambil data berdasarkan ID</p>
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" id="searchId" class="form-control" placeholder="ID" min="1">
+                                            <button class="btn btn-info" onclick="getById()">Cari</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- PUT -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card endpoint-card border-warning">
+                                    <div class="card-body">
+                                        <span class="badge bg-warning">PUT</span>
+                                        <h6>/api/mahasiswa/:id</h6>
+                                        <p class="small text-muted">Update data mahasiswa</p>
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" id="editIdInput" class="form-control" placeholder="ID" min="1">
+                                            <button class="btn btn-warning" onclick="showEditFormById()">Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- DELETE -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card endpoint-card border-danger">
+                                    <div class="card-body">
+                                        <span class="badge bg-danger">DELETE</span>
+                                        <h6>/api/mahasiswa/:id</h6>
+                                        <p class="small text-muted">Hapus data mahasiswa</p>
+                                        <div class="input-group input-group-sm">
+                                            <input type="number" id="deleteId" class="form-control" placeholder="ID" min="1">
+                                            <button class="btn btn-danger" onclick="deleteStudent()">Hapus</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- SEARCH -->
+                            <div class="col-md-6 mb-3">
+                                <div class="card endpoint-card border-secondary">
+                                    <div class="card-body">
+                                        <span class="badge bg-secondary">GET</span>
+                                        <h6>/api/mahasiswa/search/all</h6>
+                                        <p class="small text-muted">Cari mahasiswa</p>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" id="searchKeyword" class="form-control" placeholder="Kata kunci">
+                                            <button class="btn btn-secondary" onclick="searchStudents()">Cari</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Response Section -->
+                <div class="card mt-3">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">📤 API Response</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="response-box" id="apiResponse">
+                            <em>Response akan muncul di sini...</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="card mt-4">
+            <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">👥 Data Mahasiswa</h5>
+                <button class="btn btn-light btn-sm" onclick="getAllStudents()">
+                    <span id="refreshIcon">🔄</span> Refresh
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NIM</th>
+                                <th>Nama</th>
+                                <th>Jurusan</th>
+                                <th>Semester</th>
+                                <th>Email</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            <tr>
+                                <td colspan="7" class="text-center">
+                                    <div class="spinner-border spinner-border-sm text-primary" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                    Memuat data...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center mt-4 text-muted">
+            <p>© 2024 Aplikasi Data Mahasiswa - Node.js + Express + MySQL</p>
+        </footer>
+    </div>
+
+    <!-- Modal Add Form -->
+    <div class="modal fade" id="addModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">➕ Tambah Data Mahasiswa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addForm">
+                        <div class="mb-3">
+                            <label class="form-label">NIM *</label>
+                            <input type="text" class="form-control" id="addNim" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Nama Lengkap *</label>
+                            <input type="text" class="form-control" id="addNama" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Jurusan *</label>
+                            <select class="form-select" id="addJurusan" required>
+                                <option value="">Pilih Jurusan</option>
+                                <option value="Teknik Informatika">Teknik Informatika</option>
+                                <option value="Sistem Informasi">Sistem Informasi</option>
+                                <option value="Teknik Komputer">Teknik Komputer</option>
+                                <option value="Manajemen Informatika">Manajemen Informatika</option>
+                                <option value="Teknik Elektro">Teknik Elektro</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Semester</label>
+                                <input type="number" class="form-control" id="addSemester" min="1" max="14">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-control" id="addEmail">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="button" class="btn btn-primary" onclick="submitAddForm()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">✏️ Edit Data Mahasiswa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <input type="hidden" id="editId">
+                    <div class="mb-3">
+                        <label class="form-label">NIM *</label>
+                        <input type="text" class="form-control" id="editNim" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Nama Lengkap *</label>
+                        <input type="text" class="form-control" id="editNama" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Jurusan *</label>
+                        <select class="form-select" id="editJurusan" required>
+                            <option value="">Pilih Jurusan</option>
+                            <option value="Teknik Informatika">Teknik Informatika</option>
+                            <option value="Sistem Informasi">Sistem Informasi</option>
+                            <option value="Teknik Komputer">Teknik Komputer</option>
+                            <option value="Manajemen Informatika">Manajemen Informatika</option>
+                            <option value="Teknik Elektro">Teknik Elektro</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Semester</label>
+                            <input type="number" class="form-control" id="editSemester" min="1" max="14">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="editEmail">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                <button type="button" class="btn btn-primary" onclick="submitEditForm()">Update Data</button>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
